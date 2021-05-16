@@ -1,0 +1,19 @@
+.my-banner{
+    width: 100%;
+    font-size: 200%;
+    text-align: center;
+    color: white;
+    background-color: navy;
+}
+
+li{
+    padding-right: 10px;
+}
+
+.modal-pre-auth{
+    display: block;
+}
+
+.modal-post-auth{
+    display: none;
+}

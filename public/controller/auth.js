@@ -13,7 +13,13 @@ export function addEventListeners(){
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        try {
+        //unathorized log in
+        if(!Constant.adminEmails.includes(email)){
+            Util.info('Error', 'Only for Admins');
+            return;
+        }
+
+        try { 
             //calls firebase to sign in, then closes the modal
             await FirebaseController.signIn(email, password)
             Element.modalSignin.hide()
@@ -38,7 +44,7 @@ export function addEventListeners(){
 
     //event to change navbar state when user signs in/out
     firebase.auth().onAuthStateChanged( user =>{
-        if(user){
+        if(user && Constant.adminEmails.includes(user.email)){// if a user exist and there is an admin email
             //if user is signed in, show home, product, user, and sign out buttons
             currentUser = user;
             let elements = document.getElementsByClassName('modal-pre-auth')

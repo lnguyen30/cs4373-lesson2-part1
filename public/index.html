@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <button class="btn btn-outline-danger modal-pre-auth ">Sign In</button>
+              <button class="btn btn-outline-danger modal-pre-auth" data-bs-toggle="modal" data-bs-target="#modal-signin">Sign In</button>
             </li>
             <li class="nav-item">
               <button class="btn btn-outline-primary modal-post-auth">Home</button>
@@ -34,12 +34,40 @@
               <button class="btn btn-outline-primary modal-post-auth ">Users</button>
             </li>
             <li class="nav-item">
-              <button class="btn btn-outline-danger modal-post-auth ">Sign Out</button>
+              <button id="menu-signout" class="btn btn-outline-danger modal-post-auth ">Sign Out</button>
             </li>
           </ul>
         </div>
       </div>
     </nav>
+
+
+<!-- Modal sign in form -->
+<div class="modal fade" id="modal-signin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+ aria-labelledby="modal-signin-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-signin-label">Sign in, Please</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="form-signin">
+          <div>
+              <input type="email" name="email" placeholder="Enter email address">
+          </div>
+          <div>
+              <input type="password" name="password" placeholder=" Enter Password">
+          </div>
+          <div>
+              <button class="btn btn-outline-primary" type="submit">Sign In</button>
+          </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 
     <!-- Modal pop up infobox -->
 <div class="modal fade" id="modal-info" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" 

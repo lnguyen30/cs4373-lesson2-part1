@@ -25,13 +25,13 @@
               <button class="btn btn-outline-danger modal-pre-auth" data-bs-toggle="modal" data-bs-target="#modal-signin">Sign In</button>
             </li>
             <li class="nav-item">
-              <button class="btn btn-outline-primary modal-post-auth">Home</button>
+              <button id="menu-home" class="btn btn-outline-primary modal-post-auth">Home</button>
             </li>
             <li class="nav-item">
-              <button class="btn btn-outline-primary modal-post-auth ">Products</button>
+              <button id="menu-products" class="btn btn-outline-primary modal-post-auth ">Products</button>
             </li>
             <li class="nav-item">
-              <button class="btn btn-outline-primary modal-post-auth ">Users</button>
+              <button id="menu-users" class="btn btn-outline-primary modal-post-auth ">Users</button>
             </li>
             <li class="nav-item">
               <button id="menu-signout" class="btn btn-outline-danger modal-post-auth ">Sign Out</button>
@@ -41,6 +41,44 @@
       </div>
     </nav>
 
+
+    <!-- Modal: add product -->
+<div class="modal fade" id="modal-add-product" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-add-product-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-add-product-label">Add New Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="form-add-product">
+          <div>
+            <input type="text" name="name" placeholder="product name">
+            <p id="form-add-product-error-name" class="my-error"></p>
+          </div>
+          <div>
+            <input type="text" name="price" placeholder="price ($)">
+            <p id="form-add-product-error-price" class="my-error"></p>
+          </div>
+          <div>
+            Summary <br>
+            <textarea name="summary"></textarea>
+            <p id="form-add-product-error-summary" class="my-error"></p>
+          </div>
+          <div>
+            <img id="form-add-product-image" style="display: block;"/>
+            <input id="form-add-product-image-button" type="file" value="upload"/>
+            <p id="form-add-product-error-image" class="my-error"></p>
+
+          </div>
+          <div>
+            <button type="submit" class="btn btn-outline-primary">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Modal sign in form -->
 <div class="modal fade" id="modal-signin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

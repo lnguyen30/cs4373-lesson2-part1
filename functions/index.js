@@ -20,7 +20,7 @@ async function addProduct(data, context){
     // data: serialized product object
     try{
         await admin.firestore().collection(Constant.collectionNames.PRODUCT)
-                    addProduct(data);
+                    .add(data);
     }catch (e){
         if(Constant.DEV) console.log(e);
     }

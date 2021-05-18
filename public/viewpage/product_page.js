@@ -1,5 +1,8 @@
 import { Product } from '../model/product.js';
 import * as Element from './element.js'
+import * as FirebaseController from '../controller/firebase_controller.js'
+import * as Constant from '../model/constant.js'
+import * as Util from './util.js'
 
 let imageFile2Upload
 
@@ -48,7 +51,7 @@ export function product_page(){
     })
 }
 
-function addNewProduct(form){
+async function addNewProduct(form){
     const name = form.name.value;
     const price = form.price.value;
     const summary = form.summary.value;
@@ -65,10 +68,20 @@ function addNewProduct(form){
 
     if (Object.keys(errors).length !=0) return; //if errors exists
 
-
+    try {
+        const {imageName, imageURL} = await FirebaseController.uploadImage(imageFile2Upload);
+        product.imageName = imageName;
+        product.imageURL = imageURL;
+        await FirebaseController.addProduct(product.serialize());
+        Util.info('Success', `${product.name} added`, Element.modalAddProduct);
+    }catch(e){
+        if(Constant.DEV) console.log(e);
+        Util.info('Add Product Failed', JSON.stringify(e), Element.modalAddProduct);
+    }
 }
 
 
 //save product object in firebase
 //1. upload the image into cloud storage => image, name, url
 //2. store product info to firestore with image info
+

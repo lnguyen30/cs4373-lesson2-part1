@@ -11,7 +11,8 @@ export const formSignin = document.getElementById('form-signin');
 export const formAddProduct = {
     form: document.getElementById('form-add-product'),
     errorName: document.getElementById('form-add-product-error-name'),
-    errorPrice:document.getElementById('form-add-product-error-price'), 
+    errorPrice: document.getElementById('form-add-product-error-price'), 
+    errorSummary: document.getElementById('form-add-product-error-summary'),
     imageTag: document.getElementById('form-add-product-image-tag'),
     imageButton: document.getElementById('form-add-product-image-button'),
     errorImage: document.getElementById('form-add-product-error-image'),

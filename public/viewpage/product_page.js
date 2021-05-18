@@ -1,5 +1,7 @@
 import * as Element from './element.js'
 
+let imageFile2Upload
+
 export function addEventListeners(){
     //event listener when Product button is clicked, function is called in app.js
     Element.menuProducts.addEventListener('click', async ()=>{
@@ -11,6 +13,18 @@ export function addEventListeners(){
         //passes the form into addNewProduct
         addNewProduct(e.target);
     })
+
+    Element.formAddProduct.imageButton.addEventListener('change', e=>{
+        imageFile2Upload = e.target.files[0]; // form file attribute at index 0
+        //if image is null, dont proceed
+        if(!imageFile2Upload) return;
+        //reads the img file uploaded
+        const reader = new FileReader();
+        //loads image src file to tag and previews the pic
+        reader.onload = () => Element.formAddProduct.imageTag.src = reader.result
+        reader.readAsDataURL(imageFile2Upload);
+    });
+
 }
 
 export function product_page(){

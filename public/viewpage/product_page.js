@@ -68,3 +68,7 @@ function addNewProduct(form){
 
 }
 
+
+//save product object in firebase
+//1. upload the image into cloud storage => image, name, url
+//2. store product info to firestore with image info

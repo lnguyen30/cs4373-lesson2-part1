@@ -14,6 +14,11 @@ export function product_page(){
         <div>
     `;
 
-    //inserts product page in the root tag of index html file
+    //inserts add product button in the root tag of index html file
     Element.root.innerHTML = html;
+
+    document.getElementById('button-add-product').addEventListener('click', ()=>{
+        //triggers the add product modal to page
+        Element.modalAddProduct.show();
+    })
 }

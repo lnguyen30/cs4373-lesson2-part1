@@ -1,6 +1,7 @@
 import * as Route from './controller/route.js'
 import * as Auth from './controller/auth.js'
 import * as ProductPage from './viewpage/product_page.js'
+import * as Home from './viewpage/home_page.js'
 
 window.onload = ()=>{
     const pathname = window.location.pathname;
@@ -11,3 +12,4 @@ window.onload = ()=>{
 
 Auth.addEventListeners();
 ProductPage.addEventListeners();
+Home.addEventListeners();

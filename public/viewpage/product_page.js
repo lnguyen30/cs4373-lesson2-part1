@@ -35,12 +35,23 @@ export function addEventListeners(){
 
 }
 
-export function product_page(){
+export async function product_page(){
     let html = `
         <div>
             <button id="button-add-product" class="btn btn-outline-danger">+ Add Product</button>
         <div>
     `;
+
+    //client side to retreive all products
+    let products;
+    try{
+        //calls local firebase function to get list of products
+        products = await FirebaseController.getProductList();
+
+    }catch(e){
+        if(Constant.DEV) console.log(e);
+        Util.info('Cannot get product list', JSON.stringify(e));        
+    }
 
     //inserts add product button in the root tag of index html file
     Element.root.innerHTML = html;

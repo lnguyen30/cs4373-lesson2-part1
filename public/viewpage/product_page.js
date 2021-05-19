@@ -68,6 +68,10 @@ export async function product_page(){
     Element.root.innerHTML = html;
 
     document.getElementById('button-add-product').addEventListener('click', ()=>{
+        //resets add product form
+        Element.formAddProduct.form.reset();
+        Element.formAddProduct.imageTag.src = '';
+        imageFile2Upload = null;
         //triggers the add product modal to page
         Element.modalAddProduct.show();
     })

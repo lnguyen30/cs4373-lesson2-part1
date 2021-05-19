@@ -12,10 +12,12 @@ export function addEventListeners(){
         await product_page();
     });
 
-    Element.formAddProduct.form.addEventListener('submit', e =>{
+    Element.formAddProduct.form.addEventListener('submit', async e =>{
         e.preventDefault();
         //passes the form into addNewProduct
-        addNewProduct(e.target);
+       await addNewProduct(e.target);
+       //refeshes list of products list
+       await product_page();
     })
 
     Element.formAddProduct.imageButton.addEventListener('change', e=>{
@@ -69,6 +71,7 @@ export async function product_page(){
     })
 }
 
+//addes image and product info to firebase
 async function addNewProduct(form){
     //assigns values to variables
     const name = form.name.value;

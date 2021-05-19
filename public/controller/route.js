@@ -3,7 +3,6 @@ import * as User from '../viewpage/user_page.js'
 import * as Product from '../viewpage/product_page.js'
 
 
-
 export const routePathname = {
     HOME: '/',
     PRODUCTS: '/products',

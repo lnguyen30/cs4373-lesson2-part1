@@ -3,12 +3,14 @@ import * as Element from './element.js'
 import * as FirebaseController from '../controller/firebase_controller.js'
 import * as Constant from '../model/constant.js'
 import * as Util from './util.js'
+import * as Route from '../controller/route.js'
 
 let imageFile2Upload
 
 export function addEventListeners(){
     //event listener when Product button is clicked, function is called in app.js
     Element.menuProducts.addEventListener('click', async ()=>{
+        history.pushState(null, null, Route.routePathname.PRODUCTS)
         await product_page();
     });
 

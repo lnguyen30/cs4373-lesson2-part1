@@ -11,7 +11,12 @@ export function addEventListeners(){
     //event listener when Product button is clicked, function is called in app.js
     Element.menuProducts.addEventListener('click', async ()=>{
         history.pushState(null, null, Route.routePathname.PRODUCTS)
+        //disables product button 
+        // const button = Element.menuProducts;
+        // const label = Util.disableButton(button)
         await product_page();
+        //await Util.sleep(1000);
+        //Util.enableButton(button, label);
     });
 
     Element.formAddProduct.form.addEventListener('submit', async e =>{

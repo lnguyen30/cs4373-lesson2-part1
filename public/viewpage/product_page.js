@@ -11,15 +11,24 @@ export function addEventListeners(){
     //event listener when Product button is clicked, function is called in app.js
     Element.menuProducts.addEventListener('click', async ()=>{
         history.pushState(null, null, Route.routePathname.PRODUCTS)
+        const button = Element.menuProducts;
+        const label = Util.disableButton(button);
         await product_page();
+       // await Util.sleep(1000);
+        Util.enableButton(button, label);
     });
 
     Element.formAddProduct.form.addEventListener('submit', async e =>{
         e.preventDefault();
+        //disables button after clicked
+        const button = e.target.getElementsByTagName('button')[0]
+        const label = Util.disableButton(button);
         //passes the form into addNewProduct
        await addNewProduct(e.target);
        //refeshes list of products list
        await product_page();
+       //re-enables button after function is finished
+       Util.enableButton(button, label)
     })
 
     Element.formAddProduct.imageButton.addEventListener('change', e=>{

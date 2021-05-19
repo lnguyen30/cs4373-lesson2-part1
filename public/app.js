@@ -12,6 +12,14 @@ window.onload = ()=>{
     Route.routing(pathname, hash);
 }
 
+//users can navigate using back/forward buttons
+window.addEventListener('popstate', e=>{
+    e.preventDefault();
+    const pathname = e.target.location.pathname;
+    const hash = e.target.location.hash;
+    Route.routing(pathname, hash);
+})
+
 Auth.addEventListeners();
 ProductPage.addEventListeners();
 Home.addEventListeners();

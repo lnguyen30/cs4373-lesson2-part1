@@ -38,7 +38,7 @@ export function addEventListeners(){
 export function product_page(){
     let html = `
         <div>
-            <button id="button-add-product" class="btn btn-outline-danger">+ Add Product></button>
+            <button id="button-add-product" class="btn btn-outline-danger">+ Add Product</button>
         <div>
     `;
 
@@ -52,6 +52,7 @@ export function product_page(){
 }
 
 async function addNewProduct(form){
+    //assigns values to variables
     const name = form.name.value;
     const price = form.price.value;
     const summary = form.summary.value;
@@ -61,6 +62,7 @@ async function addNewProduct(form){
     //validate product form, if errors occurs then messages are returned
     const errors =  product.validate(imageFile2Upload);
 
+    //if there are errors, then assign the tags with the error messages else, give them blank values
     Element.formAddProduct.errorName.innerHTML = errors.name ? errors.name : '';
     Element.formAddProduct.errorPrice.innerHTML = errors.price ? errors.price : '';
     Element.formAddProduct.errorSummary.innerHTML = errors.summary ? errors.summary : '';
@@ -69,9 +71,11 @@ async function addNewProduct(form){
     if (Object.keys(errors).length !=0) return; //if errors exists
 
     try {
+        // firebase assigns an image name and url once uploaded
         const {imageName, imageURL} = await FirebaseController.uploadImage(imageFile2Upload);
         product.imageName = imageName;
         product.imageURL = imageURL;
+        //uploads the product to firebase
         await FirebaseController.addProduct(product.serialize());
         Util.info('Success', `${product.name} added`, Element.modalAddProduct);
     }catch(e){

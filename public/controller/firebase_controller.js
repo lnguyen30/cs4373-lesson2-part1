@@ -16,6 +16,7 @@ export async function addProduct(product){
 
 //upload image to firestore
 export async function uploadImage(imageFile, imageName){
+    //if image name does not exist, then assign one to imageName
     if(!imageName)
         imageName = Date.now() + imageFile.name;
     

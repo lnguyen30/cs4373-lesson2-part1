@@ -36,6 +36,8 @@ export function addEventListeners(){
 }
 
 export async function product_page(){
+
+    //add product button
     let html = `
         <div>
             <button id="button-add-product" class="btn btn-outline-danger">+ Add Product</button>
@@ -52,6 +54,11 @@ export async function product_page(){
         if(Constant.DEV) console.log(e);
         Util.info('Cannot get product list', JSON.stringify(e));        
     }
+
+    //render products
+    products.forEach(p =>{
+        html += buildProductCard(p);
+    });
 
     //inserts add product button in the root tag of index html file
     Element.root.innerHTML = html;
@@ -93,6 +100,19 @@ async function addNewProduct(form){
         if(Constant.DEV) console.log(e);
         Util.info('Add Product Failed', JSON.stringify(e), Element.modalAddProduct);
     }
+}
+
+//displays each product in each 
+function buildProductCard(product){
+    return `
+    <div class="card" style="width: 18rem; display: inline-block">
+        <img src="${product.imageURL}" class="card-img-top">
+        <div class="card-body">
+        <h5 class="card-title">${product.name}</h5>
+        <p class="card-text">$ ${product.price}<br>${product.summary}</p>
+        </div>
+    </div>
+    `;
 }
 
 

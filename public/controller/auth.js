@@ -2,6 +2,7 @@ import * as Element from '../viewpage/element.js'
 import * as FirebaseController from './firebase_controller.js'
 import * as Constant from '../model/constant.js'
 import * as Util from '../viewpage/util.js'
+import * as Route from './route.js'
 
 export let currentUser
 
@@ -53,6 +54,12 @@ export function addEventListeners(){
             elements = document.getElementsByClassName('modal-post-auth')
             for(let i = 0; i<elements.length; i++)
                 elements[i].style.display = 'block'
+
+            //maintains pathname once signed in
+            const pathname = window.location.pathname;
+            const hash = window.location.hash;
+            Route.routing(pathname, hash);
+
         }else{
             //if user signs out, just display the sign in button
             currentUser = null
@@ -62,6 +69,8 @@ export function addEventListeners(){
             elements = document.getElementsByClassName('modal-post-auth')
             for(let i = 0; i<elements.length; i++)
                 elements[i].style.display = 'none'
+        //defaults home path after signing out
+        history.pushState(null, null, Route.routePathname.HOME)
         }
     })
 }

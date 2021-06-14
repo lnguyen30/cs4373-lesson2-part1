@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site":"widepeepohappyheartles2pt1lvn",
     "public": "public",
     "ignore": [
       "firebase.json",
